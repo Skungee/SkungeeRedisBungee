@@ -41,7 +41,7 @@ public class SkungeeRedisBungee extends Plugin {
 		}
 		redisBungee = RedisBungeeAPI.getRedisBungeeApi();
 		skungee = (BungeeSkungee) plugin;
-		skungee.getAPI().registerHandler(new Handler(Packets.API.getPacketId()) {
+		skungee.getJapsonServer().registerHandlers(new Handler(Packets.API.getPacketId()) {
 			@Override
 			public JsonObject handle(InetSocketAddress address, JsonObject object) {
 				if (!object.has("redisbungee"))

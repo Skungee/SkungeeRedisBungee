@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -26,9 +27,12 @@ public class TrackingManager {
 
 	private final static RedisBungeeServerSerializer serializer = new RedisBungeeServerSerializer();
 	private final Table<String, RedisBungeeServer, UUID> table = HashBasedTable.create();
+	private boolean disconnected;
 
 	public TrackingManager(SkungeeRedisBungeeSpigot instance) {
 		Bukkit.getScheduler().runTaskTimerAsynchronously(instance, () -> {
+			if (disconnected)
+				return;
 			SpigotSkungee skungee = SpigotSkungee.getInstance();
 			JsonObject object = new JsonObject();
 			object.addProperty("redisbungee", instance.getDescription().getVersion());
@@ -51,7 +55,12 @@ public class TrackingManager {
 					}
 				}));
 			} catch (InterruptedException | ExecutionException | TimeoutException e) {
-				skungee.debugMessage("Failed to send RedisBungee packet");
+				skungee.debugMessages(e, "Failed to send RedisBungee packet");
+				disconnected = true;
+				try {
+					Thread.sleep(TimeUnit.SECONDS.toMillis(45));
+				} catch (InterruptedException e1) {}
+				disconnected = false;
 			}
 		}, 0, 40);
 	}

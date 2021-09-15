@@ -2,4 +2,4 @@ name: SkungeeRedisBungee
 author: Skungee
 version: @version@
 main: com.skungee.redisbungee.spigot.SkungeeRedisBungeeSpigot
-depend: [Skript, Skungee]
+depends: [Skript, Skungee]
