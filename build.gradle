@@ -63,13 +63,11 @@ dependencies {
 	implementation (group: 'net.md-5', name: 'bungeecord-api', version: '1.17-R0.1-SNAPSHOT')
 
 	// Skungee
-	implementation (group: 'com.skungee', name: 'skungee', version: '2.0.0-BETA-1') {
+	implementation (group: 'com.skungee', name: 'skungee', version: '2.0.0-BETA-2') {
 		exclude group: 'com.sitrica', module: 'japson'
 	}
 
 	implementation (group: 'com.github.limework', name: 'redisbungee', version: '0.6.5')
-
-	shadow (group: 'org.reflections', name: 'reflections', version: '0.9.12')
 
 }
 
