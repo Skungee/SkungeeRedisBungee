@@ -6,7 +6,7 @@ Currently in beta testing. Find the jars at https://github.com/Skungee/SkungeeRe
 Installation: 
 - Ensure Skungee 2.0.0-BETA-2+ is installed.
 - Ensure RedisBungee is installed.
-- Install SkungeeRedisBungee both Spigot and Bungeecord plugin folders.
+- Install SkungeeRedisBungee on both Spigot and Bungeecord plugin folders.
 - Restart Spigot servers and Bungeecords.
 
 Syntaxes:
