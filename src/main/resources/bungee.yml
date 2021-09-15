@@ -1,0 +1,5 @@
+name: SkungeeRedisBungee
+author: Skungee
+version: @version@
+main: com.skungee.redisbungee.bungeecord.SkungeeRedisBungee
+depend: [Skungee, RedisBungee]
